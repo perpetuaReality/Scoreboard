@@ -1,0 +1,126 @@
+﻿body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+
+h1, h2, h3, h4 {
+    margin: 3px;
+}
+
+button {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 3px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+input {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 3px;
+    margin: 2px;
+}
+
+.player_name {
+    float: left;
+    width: 49.5%;
+    margin: 0.25%;
+    font-size: xx-large;
+}
+
+/* SCOREBOARD */
+.name_cell {
+    padding: 5px;
+    margin-top: 3px;
+    font-size: x-large;
+    text-wrap:none;
+    overflow-wrap:break-word;
+    overflow-x:hidden;
+}
+
+.points_bar {
+    font-size: larger;
+    border: 1px solid black;
+}
+
+#threshold {
+    position: absolute;
+    z-index: -1;
+    padding: 5px;
+    margin-top: -40px;
+    background-color: fuchsia;
+    background-image: -moz-linear-gradient(left, fuchsia, white);
+    background-image: -o-linear-gradient(left, fuchsia, white);
+    background-image: -webkit-gradient(linear, left right, from(fuchsia), to(white));
+    background-image: linear-gradient(to right, fuchsia, white);
+    font-size: x-large;
+}
+
+/* TALLY-UP */
+#tally_up {
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
+    left: 15%;
+    right: 15%;
+    height: 80%;
+    width: 70%;
+    padding: 10px;
+    border: 2px solid black;
+    background-color: white;
+    -moz-box-shadow: rgba(0, 0, 0, 0.50) 0px 0px 5px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.50) 0px 0px 5px;
+    box-shadow: rgba(0, 0, 0, 0.50) 0px 0px 5px;
+    z-index: 32;
+    overflow-y: scroll;
+}
+
+.player_button {
+    float: left;
+    width: 49.5%;
+    margin: 0.25%;
+    font-size: x-large;
+    border: none;
+}
+
+.player_button:disabled {
+    cursor: not-allowed;
+}
+
+.player_button span {
+    margin: 0px;
+    font-size: medium;
+}
+
+#end_card_container {
+    position: fixed;
+    left: 0px; right: 0px; top: 0px; bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 42;
+}
+
+#end_card {
+    position: fixed;
+    top: 40%;
+    bottom: 40%;
+    left: 15%;
+    right: 15%;
+    height: 20%;
+    width: 70%;
+    padding: 10px;
+    border: 2px solid black;
+    background-color: white;
+    -moz-box-shadow: rgba(0, 0, 0, 0.50) 0px 0px 5px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.50) 0px 0px 5px;
+    box-shadow: rgba(0, 0, 0, 0.50) 0px 0px 5px;
+    overflow-y: scroll;
+}
+
+/* OTHER */
+
+#config {
+    position: absolute;
+    right: 0;
+    top: 0;
+}

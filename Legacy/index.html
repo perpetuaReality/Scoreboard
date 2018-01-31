@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link href="styles.css" type="text/css" rel="stylesheet" />
+    <title>[MISSING]</title>
+</head>
+<body>
+    <img id="logo" src="[MISSING]" alt="[MISSING]" />
+    <div id="welcome">
+        <button onclick="prepareChampionship();">📝 Comenzar registro</button>
+    </div>
+    <div id="register" hidden="hidden">
+        <fieldset id="names">
+            <h1>Introduzca el nombre de los jugadores:</h1>
+        </fieldset>
+    </div>
+
+    <div id="scoreboard" hidden="hidden">
+        <h1>Ronda N°0000</h1>
+        <h3>(El primero a 500 puntos gana)</h3>
+        <div id="graph">
+            <table id="proper_graph">
+            </table>
+        </div>
+        <button onclick="endRound();">🏁 Terminar ronda</button>
+    </div>
+
+    <div id="round_end" hidden="hidden">
+        <h2 id="round_end_title">'¿Quién ha sido el ganador de la ronda?'</h2>
+        <div id="contestants_panel">
+
+        </div>
+        <button id="reset_button" hidden="hidden">✏️ Editar ganador</button>
+        <button id="end_round_button" hidden="hidden">✔️ Contabilizar puntos</button>
+        <button id="continue_button" hidden="hidden">▶️ Continuar</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

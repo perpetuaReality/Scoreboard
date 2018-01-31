@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link href="styles.css" type="text/css" rel="stylesheet" />
+    <title></title>
+</head>
+<body>
+    <h1 id="main_title">Scoreboard</h1>
+    <div id="register">
+        <h2 id="name_input">📝 Input the names of the players</h2>
+        <p id="player_delete_hint" hidden="hidden">ℹ️ <b>Hint:</b> To "delete" a player, just erase their name from the list. All blank inputs will be ignored.</p>
+        <fieldset id="names"></fieldset>
+        <button id="add_player">➕ Add player</button>
+        <button id="enter_names">✔️ Enter names</button>
+    </div>
+    <div id="lobby" hidden="hidden">
+        <h2 id="name_confirm">👓 Confirm the names of the players</h2>
+        <p id="colour_reset_warning">⚠️ <b>Careful!</b> Clicking on "Return" will allow you to change your name or add/delete players, but will also re-randomize the colours you got. ⚠️</p>
+        <div id="name_list"></div>
+        <button id="edit_names">🔙 Return</button>
+        <button id="confirm_names" onclick="startGame();">✔️ Confirm names</button>
+    </div>
+    <div id="scoreboard" hidden="hidden">
+        <h2 id="label:round">Round #0000</h2>
+        <h3 id="game">{game description}</h3>
+        <table id="graph" border="0">
+            <tr><td>If the graph generator function works correctly, this row, and the ones below, will be deleted.</td></tr>
+            <tr><td>BLEH</td></tr>
+            <tr><td>BLEH</td></tr>
+            <tr><td>BLEH</td></tr>
+            <tr><td>BLEH</td></tr>
+            <tr><td>BLEH</td></tr>
+        </table>
+        <button id="round_end" onclick="endRound();">🛑 Finish round</button>
+    </div>
+    <div id="tally_up" hidden="hidden">
+        <h2 id="tally_title">Who won?</h2>
+        <div id="player_list"></div>
+        <button id="reset_button" onclick="tallyWinnerReset();" hidden="hidden">✏️ Ammend winner</button>
+        <button id="end_round_button" onclick="tallyFinish();" hidden="hidden">✔️ Count points</button>
+        <button id="continue_button" onclick="tallyHide();" hidden="hidden">▶️ Continue</button>
+    </div>
+    <div id="end_card_container" hidden="hidden">
+        <div id="end_card">
+            <h1 id="winner_announcement">🎉 {winner} has won! 🎊</h1>
+            <h3 id="summary">{winner} won after {roundNumber} rounds with a total of {points} points!</h3>
+            <p id="endgame_info">Would you care to play another game? Please reset the page on your browser.</p>
+        </div>
+    </div>
+
+    <script src="gamePreparation.js"></script>
+    <script src="uno.js" id="game_script"></script>
+</body>
+</html>
