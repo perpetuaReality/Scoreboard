@@ -12,3 +12,5 @@ This little project started with my sister's birthday, in late January. Since th
 You can see this prototype, which I made in a bit under two days (during which my Internet died) on the Legacy folder, or by clicking on [this link](https://perpetuareality.github.io/Scoreboard/Legacy/) for a live view.
 
 Anyway, the party passed and we didn't play much UNO, but I still really wanted to polish this app. So here you have it!
+
+*The chart functionality is powered by the [Chart.js](http://www.chartjs.org) library.*
