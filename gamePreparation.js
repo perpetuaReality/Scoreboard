@@ -11,7 +11,7 @@ var colours = ["black", "white", "lime", "green", "yellow", "orange", "red", "bl
 var lightColours = ["white", "lime", "yellow", "orange", "cyan", "hotpink", "tan", "silver", "salmon", "violet", "aquamarine", "bisque", "gold", "beige", "burlywood", "khaki", "lightgreen"];
 
 // TESTING APPARATUSES //
-var isTestRun = true; //<== TURN INTO FALSE IN PRODUCTION
+var isTestRun = false; //<== TURN INTO FALSE IN PRODUCTION
 var isMassive = false;
 var isRandomPointFloor = false;
 //Pardon the developer, but he's a dweeb.
@@ -31,7 +31,6 @@ window.onload = function () {
 
 var playerCount = defaultPlayerCount;
 var players = [];
-var rounds = [];
 var roundNumber = 0;
 
 function generateNameInput() {
@@ -91,7 +90,7 @@ function registerPlayers() {
                 points: basePoints(),
                 position: 0,
                 currentPenalty: 0,
-                scoreLog: []
+                scoreLog: [0]
             })
             index++;
         }

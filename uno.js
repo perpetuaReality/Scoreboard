@@ -81,6 +81,7 @@ var Win = false;
 //Tally-Up logic.
 function endRound() {
     //Show the Tally-Up Window and clean it.
+    document.getElementById("modal_container").hidden = false;
     tallyPanel.hidden = false;
     playerList.querySelectorAll('button').forEach(function (btn) { btn.remove(); })
 
@@ -168,6 +169,7 @@ function tallyHide() {
     continueBtn.hidden = true;
     endRoundBtn.hidden = true;
     tallyPanel.hidden = true;
+    document.getElementById("modal_container").hidden = true;
     //Generate the Score Bar Chart.
     sortPlayersByPosition();
     generateGraph();
@@ -177,8 +179,8 @@ function tallyHide() {
     })
 
     if (Win) {
-        console.log(generateGameReport());
-        document.getElementById("end_card_container").hidden = false;
+        document.getElementById("modal_container").hidden = false;
+        document.getElementById("end_card").hidden = false;
         document.getElementById("winner_announcement").innerText = "🎉 " + roundWinner.name + " has won! 🎊";
         document.getElementById("summary").innerText = roundWinner.name + " won after " + roundNumber + " rounds with a total of " + roundWinner.points + " points!";
     }
@@ -247,21 +249,67 @@ function sortPlayersByPosition() {
     players = sortedPlayers;
 }
 
-function generateGameReport() {
-    var Report = "";
-    //First lines registers game settings: the Threshold, the Round Count and the Player Count.
-    // "GAMETYPE/POINTS/ROUNDS/PLAYERCOUNT"
-    Report += "UNO/" + pointsThreshold + "/" + roundNumber + "/" + playerCount;
-    //Subsequent lines register each player's data: Name, Colour, BG Colour, and the Score after each Round.
-    // "P1:NAME/COLOUR/(dark-light)/SCORE1/SCORE2/SCORE3...
-    //  P2:NAME/COLOUR/(dark-light)/SCORE1/SCORE2/SCORE3...
-    //  ..."
+var ctx = document.getElementById("chart");
+var ProgressChart = null;
+var isDarkTheme = false;
+
+function showProgressChart() {
+    document.getElementById("end_card").hidden = true;
+    document.getElementById("end_chart").hidden = false;
+    
+    var data = [];
+    var rounds = [];
+
     players.forEach(function (player) {
-        var playerString = "|" + player.name + "/" + player.colour + "/" + player.bg;
-        player.scoreLog.forEach(function (score) {
-            playerString += "/" + score;
-        })
-        Report += playerString;
+        data.push({
+            fill: false,
+            label: player.name,
+            borderColor: player.colour,
+            backgroundColor: player.colour,
+            pointBorderColor: player.colour,
+            pointBackgroundColor: player.bg,
+            data: player.scoreLog,
+        });
     })
-    return Report;
+    for (var i = 0; i < roundNumber + 1; i++) {
+        rounds.push(i);
+    }
+    ProgressChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: rounds,
+            datasets: data
+        },
+        options: {
+            elements: {
+                line: {
+                    tension: 0,
+                }
+            },
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        max: 5,
+                        min: 0,
+                        stepSize: 0.5
+                    }
+                }]
+            }
+        }
+    })
+    Chart.defaults.global.defaultFontFamily = "Franklin Gothic Medium";
+    Chart.defaults.global.defaultFontSize = 14
+}
+
+function changeChartTheme() {
+    Chart.plugins.register({
+        beforeDraw: function (chartInstance) {
+            var ctx = chartInstance.chart.ctx;
+            ctx.fillStyle = isDarkTheme ? 'rgb(33, 33, 33)' : 'rgb(255, 255, 255)';
+            ctx.fillRect(0, 0, chartInstance.chart.width, chartInstance.chart.height);
+        }
+    });
+    Chart.defaults.global.defaultFontColor = isDarkTheme ? '#666' : '#EEE';
+    ProgressChart.update();
+    isDarkTheme = !isDarkTheme;
 }
