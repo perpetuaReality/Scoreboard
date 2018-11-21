@@ -1,4 +1,5 @@
 # Scoreboard
+**Version 2.0 now live at https://github.com/perpetuaReality/Scoreboardv2 This repository has been archived.**
 ## A simple scoreboard for card games
 
 This project is right what it says on the tin: **a scoreboard!**
